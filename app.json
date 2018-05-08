@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/my/my",
+    "pages/message/message"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFD700",
+    "navigationBarTitleText": "只为遇见你",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "遇见你",
+        "iconPath": "/images/003.png"
+      },{
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "/images/002.png"
+      },{
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/images/001.png"
+      }
+    ],
+    "color": "#C0C0C0",
+    "selectedColor": "#000000",
+    "borderStyle": "black"
+  }
+
+}
