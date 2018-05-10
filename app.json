@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/my/my",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/userdetail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,24 +13,30 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#000000",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "box-shadow": "0 0 6px 0",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "遇见你",
-        "iconPath": "/images/003.png"
-      },{
+        "iconPath": "/images/033.png",
+        "selectedIconPath": "/images/003.png"
+      },
+      {
         "pagePath": "pages/message/message",
         "text": "消息",
-        "iconPath": "/images/002.png"
-      },{
+        "iconPath": "/images/022.png",
+        "selectedIconPath": "/images/002.png"
+      },
+      {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "/images/001.png"
+        "iconPath": "/images/011.png",
+        "selectedIconPath": "/images/001.png"
       }
-    ],
-    "color": "#C0C0C0",
-    "selectedColor": "#000000",
-    "borderStyle": "black"
+    ]
   }
-
 }

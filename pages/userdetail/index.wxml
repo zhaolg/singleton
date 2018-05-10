@@ -1,0 +1,55 @@
+<import src="../../wxParse/wxParse.wxml" />
+  <view class="HotName">范冰冰
+    <text></text>
+  </view>
+  <view class="HotMark">我就是我，不一样的烟火</view>
+  <!-- 个人照片展示界面多张展示  -->
+  <view class="swiper-container">
+    <swiper class="swiper_box" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/6}}rpx" next-margin="{{windowWidth/8}}rpx">
+      <block wx:for="{{personDetail.photo}}" wx:key="id">
+        <swiper-item class="goods-swiper-item">
+          <image src="{{item.picurl}}" class="slide-image" mode="widthFix" lazy-load="true" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 个人基本信息展示 年龄 性别 现居地   三个基本信息 -->
+  <view class="goods-container">
+    <view class="goods-container-info">
+      <view class="goods-container-money">
+        <text></text>现居:{{personDetail.basicInfo.curr_province}}
+      </view>
+      <view class="goods-container-money">
+        <text></text>籍贯:{{personDetail.basicInfo.native_province}}
+      </view>
+      <view class="goods-container-money">
+        <text></text>{{personDetail.basicInfo.gender}}
+      </view>
+      <view class="goods-container-money">
+        <text></text>{{personDetail.basicInfo.age}}
+      </view>
+    </view>
+    <!-- 个人标签展示 -->
+    <view class="goods-container-incon">
+      <view class="goods-container-icon-list">
+        <image wx:if="{{favicon == 0}}" src="../../images/block.png"></image>
+        <image wx:if="{{favicon == 1}}" src="../../images/red.png"></image>
+        <text wx:if="{{favicon == 0}}">喜欢</text>
+        <text wx:if="{{favicon == 1}}">已喜欢</text>
+      </view>
+      <view class="goods-container-icon-list">
+        <contact-button type="default-dark" session-from="weapp" size="27"></contact-button>
+        <image src="../../images/022.png" />
+        <text>聊一聊</text>
+      </view>
+      <view class="goods-container-icon-list">
+        <button open-type="share">分享</button>
+        <image src="../../images/033.png" />
+        <text>分享</text>
+      </view>
+    </view>
+  </view>
+  <view class="goods-footer">
+    <view class="goods-footer-add" bindtap="toAddShopCar">不喜欢</view>
+    <view class="goods-footer-buy" bindtap="tobuy">喜欢</view>
+  </view>

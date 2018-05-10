@@ -78,7 +78,7 @@ Page({
     } else {
       wx.showModal({
         title: "确认退出?",
-        content: "退出后将不能使用车位帮",
+        content: "退出后将不能使用单身帮",
         success: (res) => {
           if (res.confirm) {
             console.log("确定")

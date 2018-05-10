@@ -1,13 +1,35 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="all-style">
+  <view class="HotName">{{HotName.value}}
+    <text></text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="HotMark">{{HotName.remark}}</view>
+  <view class="HotSwiper" style="margin-top:{{windowHeight/45}}px">
+    <swiper circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/3.8}}rpx" next-margin="{{windowWidth/3.8}}rpx">
+      <block wx:for-items="{{person}}" wx:key="{{index}}">
+        <swiper-item>
+          <view class="swiper-box">
+            <image src="{{item.picurl}}" mode="widthFix" bindtap="showUserDetail" data-id="{{item.id}}" />
+            <view class="swiper-box-info">
+              <view class="box-info-name">{{item.name}}</view>
+              <view class="box-info-money">
+                <text wx:if="{{item.gender == '男'}}">♂ {{item.age}}</text>
+                <text wx:if="{{item.gender == '女'}}">♀ {{item.age}}</text>
+              </view>
+              <view class="box-info-money">
+                <text></text>{{item.province}}
+              </view>
+              <view class="box-info-icon-box">
+                <view class="box-info-icon">
+                  <image src="../../images/block.png" bindtap="block_action" data-id="{{item.id}}" />
+                </view>
+                <view class="box-info-icon">
+                  <image src="../../images/red.png" bindtap="red_action" data-id="{{item.id}}"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 </view>
