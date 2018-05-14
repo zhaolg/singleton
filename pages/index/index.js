@@ -19,10 +19,10 @@ Page({
       name: "范冰冰",
       gender: "女",
       age: 24,
-      province:"北京",
+      province: "北京",
       index: "index_1",
-      college:"北京大学",
-      picurl:"/images/person/fbb.jpg"
+      college: "北京大学",
+      picurl: "/images/person/fbb.jpg"
     }, {
       id: 4,
       name: "胡歌",
@@ -69,7 +69,7 @@ Page({
       college: "北京大学",
       picurl: "/images/person/wuyf.jpg"
     }
-    
+
     ]
   },
 
@@ -93,22 +93,27 @@ Page({
   onShow: function () {
   },
 
-  block_action:function(e){
-    console.log("method:block---->不太喜欢");
-     console.log(e);
+  block_action: function (e) {
+    if(app.checkLogin()){
+      console.log("method:block---->不太喜欢");
+    }
   },
 
-  red_action:function(e){
-    console.log("method:red---->非常喜欢");
-    console.log(e);
+  red_action: function (e) {
+    if (app.checkLogin()) {
+      console.log("method:red---->非常喜欢");
+      console.log(e);
+    }
+  
   },
 
-  showUserDetail:function(e){
-    console.log("method:showUserDetail---->跳转到用户详情见面");
-    wx.navigateTo({
-      url: "/pages/userdetail/index?id=" + e.currentTarget.dataset.id
-    })
+  showUserDetail: function (e) {
+    if (app.checkLogin()) {
+      console.log("method:showUserDetail---->跳转到用户详情见面");
+      wx.navigateTo({
+        url: "/pages/userdetail/index?id=" + e.currentTarget.dataset.id
+      })
+    }
   },
-
 
 })

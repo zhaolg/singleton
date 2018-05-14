@@ -1,16 +1,45 @@
-<!--pages/my/index.wxml-->
-<view class="container">
-    <view class="user-info">
-    <block wx:if="{{userInfo.avatarUrl != ''}}">
-        <image src="{{userInfo.avatarUrl}}"></image>
-    </block>
-        <text>{{userInfo.nickName}}</text>
-    </view>
-    <block wx:if="{{userInfo.avatarUrl != ''}}">
-    <view class="my-wallet tapbar" bindtap="movetoWallet">
-        <text>我的资料</text>
-        <text>></text>
-    </view>
-    </block>
-    <button bindtap="bindAction" class="btn-login" hover-class="gray" type="{{bType}}" >{{actionText}}</button>
+<view class="userinfo">
+  <image mode="widthFix" wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <view class="iser-info-box">
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <text class="userinfo-score" wx:if="{{userInfo.gender==1}}">♂ {{userInfo.country}} {{userInfo.province}}</text>
+    <text class="userinfo-score" wx:if="{{userInfo.gender==2}}">♀ {{userInfo.country}} {{userInfo.province}}</text>
+  </view>
+</view>
+<view class="userinfo-item">
+  <image src="../../images/my/my_info.png"></image>
+  <navigator url="/pages/myinfo/myinfo" open-type="navigate" hover-class="none"> 我的资料
+    <image src="../../images/right-icon.png" />
+  </navigator>
+</view>
+<view class="userinfo-item">
+  <image src="../../images/my/blance.png"></image>
+  <navigator url="/pages/myblance/blance" hover-class="none"> 我的钱包
+    <text>（{{balance}}元）</text>
+    <image src="../../images/right-icon.png" />
+  </navigator>
+</view>
+<view class="userinfo-item">
+  <image src="../../images/my/like.png"></image>
+  <navigator url="/pages/myapplicat/applicat" hover-class="none"> 我的应征
+    <text>（999）</text>
+    <image src="../../images/right-icon.png" />
+  </navigator>
+</view>
+<view class="userinfo-item">
+  <image src="../../images/my/like_2.png"></image>
+  <navigator url="/pages/myinterest/interest" hover-class="none"> 我感兴趣的TA
+    <text>（999）</text>
+    <image src="../../images/right-icon.png" />
+  </navigator>
+</view>
+<view class="userinfo-item" bindtap="aboutme" >
+  <image src="../../images/my/compar.png"></image>
+  <view> 关于单身帮
+    <image src="../../images/right-icon.png" />
+  </view>
+</view>
+<view style="height:50rpx;background: #eee;width:100%;"></view>
+<view class="my-item" style="border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;">
+  <button type="{{actionType}}" bindtap="relogin">{{actionText}}</button>
 </view>

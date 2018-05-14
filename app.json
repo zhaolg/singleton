@@ -4,7 +4,14 @@
     "pages/logs/logs",
     "pages/my/my",
     "pages/message/message",
-    "pages/userdetail/index"
+    "pages/userdetail/index",
+    "pages/message/chat/chat",
+    "pages/message/search/search",
+    "pages/myinfo/myinfo",
+    "pages/myblance/blance",
+    "pages/myapplicat/applicat",
+    "pages/myinterest/interest",
+    "pages/aboutme/aboutme"
   ],
   "window": {
     "backgroundTextStyle": "light",

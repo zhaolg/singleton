@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "我的资料",
+  "usingComponents": {
+    "zan-panel": "/dist/panel/index",
+    "zan-capsule": "/dist/capsule/index",
+    "doc-page": "/components/doc-page/index",
+    "zan-cell": "/dist/cell/index",
+    "zan-tag": "/dist/tag/index",
+    "zan-button": "/dist/btn/index"
+  }
+}

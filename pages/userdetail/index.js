@@ -21,13 +21,39 @@ Page({
           index: 3
         }
       ],
-      basicInfo:{
-          age:24,
-          gender:"女",
-          curr_province:"上海",
-          native_province:"内蒙古"
+      basicInfo: {
+        age: 24,
+        gender: "女",
+        curr_province: "上海",
+        native_province: "内蒙古"
       }
     },
+    reputation: [
+      {
+      user: {
+        avatarUrl: "/images/man/duck.png",
+        nick: "赵林刚"
+      },
+      goods: {
+        goodReputationStr: "攒",
+        goodReputationRemark: "非常好的人",
+        dateReputation: "2018-05-10 12:00",
+        property: "好评如潮"
+      }
+    },
+      {
+        user: {
+          avatarUrl: "/images/man/duck.png",
+          nick: "林刚"
+        },
+        goods: {
+          goodReputationStr: "攒",
+          goodReputationRemark: "非常好的人",
+          dateReputation: "2018-05-10 12:00",
+          property: "好评如潮"
+        }
+      }
+    ],
     swiperCurrent: 0,
     hasMoreSelect: false,
     selectSize: "选择：",

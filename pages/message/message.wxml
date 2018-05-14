@@ -3,8 +3,8 @@
 <view class="serach_view_show" bindtap="bindtap"> 搜索</view>
 </view>
   <view class="message_list">
-     <block wx:for="{{messages}}">
-        <navigator url="/pages/message/chat/chat">
+     <block wx:for="{{messages}}" wx:key="item">
+        <navigator url="/pages/message/chat/chat?name={{item.title}}&url={{item.url}}">
           <view class="item" >
              <view class="item-left">
                   <image src="{{item.url}}" class="image"/>
