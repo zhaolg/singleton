@@ -1,1 +1,52 @@
-/* pages/myblance/blance.wxss */
+.overage{
+	background-color:#FFD700;
+	padding: 10rpx 0;
+	text-align: center;
+}
+.overage-header{
+  color: #FFF;
+	font-size: 24rpx;
+}
+.overage-amount{
+  color: #FFF;
+	display: inline-block;
+	padding: 20rpx 0;
+	font-size: 80rpx;
+	font-weight: 700;
+}
+.overage-desc{
+  color: #FFF;
+	padding: 10rpx 40rpx;
+	font-size: 24rpx;
+	border-radius: 40rpx;
+	border: 1px solid #FFF;
+}
+.my-deposit{
+	margin-top: 2rpx;
+}
+.my-invcode{
+	margin-top: 40rpx;
+}
+.c-y{
+	color: #b9dd08;
+	padding-top: -5rpx;
+	padding-right: 10rpx;
+}
+.c-g{
+	padding-top: -5rpx;
+	padding-right: 10rpx;
+}
+
+.tapbar{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fff;
+	padding: 40rpx;
+}
+.btn-charge{
+	width: 90%;
+	background-color: #b9dd08;
+	margin: 40rpx auto 30rpx;
+	text-align: center;
+}

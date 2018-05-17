@@ -36,7 +36,7 @@
     </zan-cell>
   </zan-panel>
 
-  <zan-panel title=' ' style="margin-top:20px;">
+  <zan-panel title=' ' style="margin-top:20px;" class="{{showView?'modifyByMy_show':'modifyByMy_hide'}}">
     <zan-button size="large" type="danger" bindtap="modifySelfInfo" >编辑我的资料</zan-button>
   </zan-panel>
 </doc-page>

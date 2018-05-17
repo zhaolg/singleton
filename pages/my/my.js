@@ -12,19 +12,41 @@ Page({
     actionText: "登录",
     actionType: "primary",
   },
-   getUserInfo: function (cb) {
-    var that = this
+  getUserInfo: function (cb) {
+    var that = this;
     wx.login({
-      success: function () {
-        wx.getUserInfo({
-          lang: "zh_CN",
-          success: function (res) {
-            that.setData({
-              userInfo: res.userInfo
-            });
-            app.globalData.userInfo = res.userInfo;
+      success: function (res) {
+        wx.hideLoading();
+        wx.getSetting({
+          success: (response) => {
+            if (!response.authSetting['scope.userInfo']) {
+              wx.authorize({
+                scope: 'scope.userInfo',
+                success: () => {
+                  that.getUserinfoFun();
+                }
+              })
+            } else {
+              that.getUserinfoFun();
+            }
           }
         })
+      }
+    })
+  },
+  getUserinfoFun:function(){
+    var that = this;
+    wx.getUserInfo({
+      withCredentials: true,
+      lang: "zh_CN",
+      success: function (res) {
+        that.setData({
+          userInfo: res.userInfo,
+          isLogin: true,
+          actionText: "退出",
+          actionType: "warn",
+        });
+        app.globalData.userInfo = res.userInfo;
       }
     })
   },
@@ -39,11 +61,6 @@ Page({
       app.globalData.userInfo = null;
     } else {//登录
       this.getUserInfo();
-      this.setData({
-        isLogin: true,
-        actionText: "退出",
-        actionType: "warn",
-      });
     }
   },
   aboutme: function () {

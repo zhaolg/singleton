@@ -8,22 +8,25 @@
       <block wx:for-items="{{person}}" wx:key="{{index}}">
         <swiper-item>
           <view class="swiper-box">
-            <image src="{{item.picurl}}" mode="widthFix" bindtap="showUserDetail" data-id="{{item.id}}" />
+            <image src="{{item.picurl}}" mode="widthFix" bindtap="showUserDetail" data-id="{{item.userId}}" />
             <view class="swiper-box-info">
-              <view class="box-info-name">{{item.name}}</view>
+              <view class="box-info-name">{{item.userName}}</view>
               <view class="box-info-money">
-                <text wx:if="{{item.gender == '男'}}">♂ {{item.age}}</text>
-                <text wx:if="{{item.gender == '女'}}">♀ {{item.age}}</text>
+                <text wx:if="{{item.gender == '1'}}">♂ {{item.age}}</text>
+                <text wx:if="{{item.gender == '2'}}">♀ {{item.age}}</text>
               </view>
               <view class="box-info-money">
-                <text></text>{{item.province}}
+                <text></text>{{item.currProvince}}
+              </view>
+              <view class="box-info-money">
+                <text></text>{{item.edu}}
               </view>
               <view class="box-info-icon-box">
                 <view class="box-info-icon">
-                  <image src="../../images/block.png" bindtap="block_action" data-id="{{item.id}}" />
+                  <image src="../../images/block.png" bindtap="block_action" data-id="{{item.userId}}" />
                 </view>
                 <view class="box-info-icon">
-                  <image src="../../images/red.png" bindtap="red_action" data-id="{{item.id}}"></image>
+                  <image src="../../images/red.png" bindtap="red_action" data-id="{{item.userId}}"></image>
                 </view>
               </view>
             </view>

@@ -41,5 +41,5 @@
 </view>
 <view style="height:50rpx;background: #eee;width:100%;"></view>
 <view class="my-item" style="border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;">
-  <button type="{{actionType}}" bindtap="relogin">{{actionText}}</button>
+  <button type="{{actionType}}" bindtap="relogin" open-type="getUserInfo" >{{actionText}}</button>
 </view>

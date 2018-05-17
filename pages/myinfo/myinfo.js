@@ -7,6 +7,7 @@ Page({
     interval: 500000,
     duration: 500,
     circular: true,
+    showView: true ,
     personDetail: {
       photo:
       [
@@ -57,7 +58,8 @@ Page({
     },
   },
 
-  onLoad: function () {
+  onLoad: function (e) {
+    console.log(e);
     if (app.checkLogin()) {
       this.onShow();
       var that = this;
@@ -73,6 +75,11 @@ Page({
         userInfo: app.globalData.userInfo
       });
     } 
+    if (e.userId){
+      that.setData({
+        showView : false 
+      });
+    }
   },
 
   modifySelfInfo:function(){

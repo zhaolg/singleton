@@ -64,3 +64,12 @@ zan-tag + zan-tag {
   overflow:hidden;
   text-overflow:ellipsis;
 }
+
+.modifyByMy_hide {
+  display: none;
+}
+
+.modifyByMy_show {
+  display: block;
+}
+

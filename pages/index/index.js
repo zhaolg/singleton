@@ -15,57 +15,57 @@ Page({
       remark: "今日推荐"
     },
     person: [{
-      id: 1,
-      name: "范冰冰",
-      gender: "女",
+      userId: 1,
+      userName: "范冰冰",
+      gender: "2",
       age: 24,
-      province: "北京",
-      index: "index_1",
+      currProvince: "北京",
+      edu: "本科",
       college: "北京大学",
       picurl: "/images/person/fbb.jpg"
     }, {
-      id: 4,
-      name: "胡歌",
-      gender: "男",
+      userId: 4,
+      userName: "胡歌",
+      gender: "1",
       age: 30,
-      province: "北京",
-      index: "index_4",
+      currProvince: "北京",
+      edu: "本科",
       college: "北京大学",
       picurl: "/images/person/hg.gif"
     }, {
-      id: 2,
-      name: "鹿晗",
-      gender: "男",
+      userId: 2,
+      userName: "鹿晗",
+      gender: "1",
       age: 24,
-      province: "上海",
-      index: "index_2",
+      currProvince: "上海",
       college: "内蒙古科技大学",
+      edu: "硕士",
       picurl: "/images/person/lh.jpeg"
     }, {
-      id: 3,
-      name: "张柏芝",
-      gender: "女",
+      userId: 3,
+      userName: "张柏芝",
+      gender: "2",
       age: 24,
-      province: "香港",
-      index: "index_3",
+      currProvince: "香港",
       college: "北京大学",
+      edu: "本科",
       picurl: "/images/person/zbz.jpeg"
     }, {
-      id: 5,
-      name: "彭于晏",
-      gender: "男",
+      userId: 5,
+      userName: "彭于晏",
+      gender: "1",
       age: 30,
-      index: "index_5",
-      province: "香港",
+      currProvince: "香港",
       college: "北京大学",
+      edu: "本科",
       picurl: "/images/person/pyy.jpeg"
     }, {
-      id: 6,
-      name: "吴亦凡",
-      gender: "男",
+      userId: 6,
+      userName: "吴亦凡",
+      gender: "1",
       age: 24,
-      province: "内蒙古",
-      index: "index_6",
+      currProvince: "内蒙古",
+      edu: "本科",
       college: "北京大学",
       picurl: "/images/person/wuyf.jpg"
     }
@@ -94,7 +94,7 @@ Page({
   },
 
   block_action: function (e) {
-    if(app.checkLogin()){
+    if (app.checkLogin()) {
       console.log("method:block---->不太喜欢");
     }
   },
@@ -104,14 +104,14 @@ Page({
       console.log("method:red---->非常喜欢");
       console.log(e);
     }
-  
+
   },
 
   showUserDetail: function (e) {
     if (app.checkLogin()) {
       console.log("method:showUserDetail---->跳转到用户详情见面");
       wx.navigateTo({
-        url: "/pages/userdetail/index?id=" + e.currentTarget.dataset.id
+        url: "/pages/myinfo/myinfo?userId=" + e.currentTarget.dataset.id
       })
     }
   },

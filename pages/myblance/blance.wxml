@@ -1,2 +1,20 @@
-<!--pages/myblance/blance.wxml-->
-<text>pages/myblance/blance.wxml</text>
+<view class="overage">
+  <view>
+    <text class="overage-header">我的余额（元）</text>
+  </view>
+  <view>
+    <text class="overage-amount">{{overage}}</text>
+  </view>
+  <view>
+    <text bindtap="overageDesc" class="overage-desc">余额说明</text>
+  </view>
+</view>
+<button bindtap="movetoCharge" class="btn-charge">充值</button>
+<view bindtap="showTicket" class="my-ticket tapbar">
+  <text>我的优惠券</text>
+  <text><text class="c-g">{{ticket}}张</text>></text>
+</view>
+<view bindtap="showDeposit" class="my-deposit tapbar">
+  <text>我的会员</text>
+  <text><text class="c-y">VIP已过期</text>></text>
+</view>

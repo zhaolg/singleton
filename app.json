@@ -11,7 +11,8 @@
     "pages/myblance/blance",
     "pages/myapplicat/applicat",
     "pages/myinterest/interest",
-    "pages/aboutme/aboutme"
+    "pages/aboutme/aboutme",
+    "pages/charge/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
