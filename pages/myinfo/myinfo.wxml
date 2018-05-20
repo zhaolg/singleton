@@ -1,8 +1,8 @@
 <view class="swiper-container">
   <swiper class="swiper_box" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/5}}rpx" next-margin="{{windowWidth/5}}rpx">
-    <block wx:for="{{personDetail.photo}}" wx:key="id">
+    <block wx:for="{{user.imageInfos}}" wx:key="id">
       <swiper-item class="swiper-box">
-        <image src="{{item.picurl}}" mode="widthFix" />
+        <image src="{{item.imageUrl}}" mode="widthFix" />
       </swiper-item>
     </block>
   </swiper>
@@ -13,25 +13,25 @@
   <zan-panel title='基本信息'>
     <view class="capsule-demo">
       <zan-cell>
-        <zan-capsule type="danger" leftText="现居" rightText="{{personDetail.basicInfo.curr_province}}" />
-        <zan-capsule type="danger" leftText="籍贯" rightText="{{personDetail.basicInfo.native_province}}" />
-        <zan-capsule type="danger" leftText="{{personDetail.basicInfo.edu}}" rightText="{{personDetail.basicInfo.college}}" />
-        <zan-tag type="danger" plain>{{personDetail.basicInfo.gender}}</zan-tag>
-        <zan-tag type="danger" plain>{{personDetail.basicInfo.age}}</zan-tag>
+        <zan-capsule type="danger" leftText="现居" rightText="{{user.userInfo.currProvince}}" />
+        <zan-capsule type="danger" leftText="籍贯" rightText="{{user.userInfo.nativeProvince}}" />
+        <zan-capsule type="danger" leftText="{{user.userInfo.edu}}" rightText="{{user.userInfo.college}}" />
+        <zan-tag type="danger" plain>{{userInfo.gender == 1 ? '男' : '女'}}</zan-tag>
+        <zan-tag type="danger" plain>{{user.userInfo.age}}</zan-tag>
       </zan-cell>
     </view>
   </zan-panel>
 
   <zan-panel title='我的个人介绍' class="self-introduction">
     <view class="capsule-demo">
-      <view style="padding: 15px;">{{personDetail.basicInfo.self_introduction}}</view>
+      <view style="padding: 15px;">{{user.userInfo.selfIntroduction}}</view>
     </view>
   </zan-panel>
 
   <zan-panel title='我的标签'>
     <zan-cell>
-      <block wx:for="{{personDetail.basicInfo.myTag}}" wx:key="item">
-        <zan-tag type="{{item.type}}" plain>{{item.tagName}}</zan-tag>
+      <block wx:for="{{user.userTags}}" wx:key="item">
+        <zan-tag type="{{item.tagType}}" plain>{{item.tagName}}</zan-tag>
       </block>
     </zan-cell>
   </zan-panel>

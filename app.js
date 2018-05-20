@@ -3,7 +3,12 @@ App({
   onLaunch: function () {
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    appId:"wx7b6ac9d1d156638e",
+    secret:"1499a17e6dffbd341e7bcd5d5e2a68a2",
+    code:null,
+    user:null,
+    singletonUrl:"https://www.zhaolg5.com/singleton"
   },
   checkLogin: function () {
     if (this.globalData.userInfo == null) {

@@ -1,90 +1,34 @@
-<import src="../../wxParse/wxParse.wxml" />
-<view class="HotName">范冰冰
-  <text></text>
-</view>
-<view class="HotMark">我就是我，不一样的烟火</view>
-<!-- 个人照片展示界面多张展示  -->
 <view class="swiper-container">
-  <swiper class="swiper_box" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/6}}rpx" next-margin="{{windowWidth/8}}rpx">
-    <block wx:for="{{personDetail.photo}}" wx:key="id">
-      <swiper-item class="goods-swiper-item">
-        <image src="{{item.picurl}}" class="slide-image" mode="widthFix" lazy-load="true" />
-      </swiper-item>
-    </block>
+  <swiper class="swiper_box" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/3}}rpx" next-margin="{{windowWidth/3}}rpx">
+    <swiper-item class="swiper-box" bindtap="addImage" data-id="1">
+      <image src="{{imageInfos_1.imageUrl}}" mode="widthFix" />
+    </swiper-item>
+    <swiper-item class="swiper-box" bindtap="addImage" data-id="2">
+      <image src="{{imageInfos_2.imageUrl}}" mode="widthFix" />
+    </swiper-item>
+    <swiper-item class="swiper-box" bindtap="addImage" data-id="3">
+      <image src="{{imageInfos_3.imageUrl}}" mode="widthFix" />
+    </swiper-item>
   </swiper>
 </view>
-<!-- 个人基本信息展示 年龄 性别 现居地   三个基本信息 -->
-<view class="goods-container">
-  <view class="goods-container-info">
-    <view class="goods-container-money">
-      <text></text>现居:{{personDetail.basicInfo.curr_province}}
-    </view>
-    <view class="goods-container-money">
-      <text></text>籍贯:{{personDetail.basicInfo.native_province}}
-    </view>
-    <view class="goods-container-money">
-      <text></text>{{personDetail.basicInfo.gender}}
-    </view>
-    <view class="goods-container-money">
-      <text></text>{{personDetail.basicInfo.age}}
-    </view>
-  </view>
-  <!-- 个人标签展示 -->
-  <view class="goods-container-incon">
-    <view class="goods-container-icon-list">
-      <image wx:if="{{favicon == 0}}" src="../../images/block.png"></image>
-      <image wx:if="{{favicon == 1}}" src="../../images/red.png"></image>
-      <text wx:if="{{favicon == 0}}">喜欢</text>
-      <text wx:if="{{favicon == 1}}">已喜欢</text>
-    </view>
-    <view class="goods-container-icon-list">
-      <contact-button type="default-dark" session-from="weapp" size="27"></contact-button>
-      <image src="../../images/022.png" />
-      <text>聊一聊</text>
-    </view>
-    <view class="goods-container-icon-list">
-      <button open-type="share">分享</button>
-      <image src="../../images/033.png" />
-      <text>分享</text>
-    </view>
-  </view>
-  <view class="goods-container-article">
-      <view class="swiper-article-tab">
-        <view class="swiper-article-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">自我介绍</view>
-        <view class="swiper-article-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">朋友评价
-          <text wx:if="{{reputation.length}}">({{reputation.length}})</text>
-        </view>
-      </view>
-      <swiper current="{{currentTab}}" class="swiper-article-box" duration="300" style="height:{{windowHeight - 46}}px" bindchange="bindChange">
-        <swiper-item>
-          <view class="goods-article-text">
-              <template is="wxParse" data="{{wxParseData:article.nodes}}" />  
-          </view>
-        </swiper-item>
-        <swiper-item>
-          <view wx:if="{{!reputation}}" class="no-goods-reput">暂无评价!</view>
-          <view class="goods-reputa-list" wx:for="{{reputation}}" wx:key="id">
-            <!-- 头像 -->
-            <view class="goods-reputa-avatar">
-              <image class="goods-avatar" src="{{item.user.avatarUrl}}"></image>
-            </view>
-            <view class="goods-reputa-mark">
-              <view class="goods-reputa-user">
-                {{item.user.nick}}
-                <text>{{item.goods.goodReputationStr}}</text>
-              </view>
-              <view class="goods-mark">{{item.goods.goodReputationRemark}}</view>
-              <view class="goods-mark-day">
-                {{item.goods.dateReputation}}
-                <text>{{item.goods.property}}</text>
-              </view>
-            </view>
-          </view>
-        </swiper-item>
-      </swiper>
-    </view>
-</view>
-<view class="goods-footer">
-  <view class="goods-footer-add" bindtap="toAddShopCar">不喜欢</view>
-  <view class="goods-footer-buy" bindtap="tobuy">喜欢</view>
-</view>
+<zan-panel title="我的信息">
+  <zan-row>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+  </zan-row>
+</zan-panel>
+<zan-panel title="我的标签">
+  <zan-row>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+  </zan-row>
+</zan-panel>
+<zan-panel title="按钮区域">
+  <zan-row>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
+  </zan-row>
+</zan-panel>

@@ -1,84 +1,117 @@
 var app = getApp();
-var WxParse = require('../../wxParse/wxParse.js');
-
 Page({
   data: {
     autoplay: true,
     interval: 500000,
     duration: 500,
     circular: true,
-    personDetail: {
-      photo:
-      [
-        {
-          picurl: "/images/person/fbb.jpg",
-          index: 1
-        }, {
-          picurl: "/images/person/fbb.jpg",
-          index: 2
-        }, {
-          picurl: "/images/person/fbb.jpg",
-          index: 3
-        }
-      ],
-      basicInfo: {
-        age: 24,
-        gender: "女",
-        curr_province: "上海",
-        native_province: "内蒙古"
-      }
+    showView: true,
+    windowWidth: 0,
+    windowHeight: 0,
+    currindex: 1,
+    imageInfos_1: {
+      imageUrl: "/images/tpsc.png",
+      imageId: 1
     },
-    reputation: [
-      {
-      user: {
-        avatarUrl: "/images/man/duck.png",
-        nick: "赵林刚"
-      },
-      goods: {
-        goodReputationStr: "攒",
-        goodReputationRemark: "非常好的人",
-        dateReputation: "2018-05-10 12:00",
-        property: "好评如潮"
-      }
+    imageInfos_2: {
+      imageUrl: "/images/tpsc.png",
+      imageId: 2
     },
-      {
-        user: {
-          avatarUrl: "/images/man/duck.png",
-          nick: "林刚"
-        },
-        goods: {
-          goodReputationStr: "攒",
-          goodReputationRemark: "非常好的人",
-          dateReputation: "2018-05-10 12:00",
-          property: "好评如潮"
-        }
-      }
-    ],
-    swiperCurrent: 0,
-    hasMoreSelect: false,
-    selectSize: "选择：",
-    selectSizePrice: 0,
-    shopNum: 0,
-    hideShopPopup: true,
-    buyNumber: 0,
-    buyNumMin: 1,
-    buyNumMax: 0,
-    currentTab: 0,
-    favicon: 1,
-
-    propertyChildIds: "",
-    propertyChildNames: "",
-    canSubmit: false,
-    shopCarInfo: {},
-    shopType: "addShopCar",
-  },
-
-  onLoad: function (e) {
-    if (e.inviter_id) {
-      wx.setStorage({
-        key: 'inviter_id_' + e.id,
-        data: e.inviter_id
-      })
+    imageInfos_3: {
+      imageUrl: "/images/tpsc.png",
+      imageId: 3
     }
   },
+  onLoad: function (e) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          windowWidth: res.windowWidth,
+          windowHeight: res.windowHeight,
+        });
+      }
+    })
+      },
+  onShow: function () {
+    var that = this;
+    if (app.globalData.user.imageInfos.length > 0) {
+      console.log("界面加载");
+      if (app.globalData.user.imageInfos.length == 1) {
+        that.setData({
+          imageInfos_1: app.globalData.user.imageInfos[0]
+        });
+      }
+      if (app.globalData.user.imageInfos.length == 2) {
+        that.setData({
+          imageInfos_1: app.globalData.user.imageInfos[0],
+          imageInfos_2: app.globalData.user.imageInfos[1]
+        });
+      }
+      if (app.globalData.user.imageInfos.length >= 3) {
+        console.log("界面加载-3");
+        that.setData({
+          imageInfos_1: app.globalData.user.imageInfos[0],
+          imageInfos_2: app.globalData.user.imageInfos[1],
+          imageInfos_3: app.globalData.user.imageInfos[2]
+        });
+      }
+      console.log(app.globalData.user);
+    }
+
+  },
+  onPageScroll: function () {
+
+  },
+  addImage: function (curr) {
+    var that = this;
+    that.setData({
+      currindex: curr.currentTarget.dataset.id
+    });
+    wx.chooseImage({
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        wx.uploadFile({
+          url: app.globalData.singletonUrl + '/imageUpload',
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'openid': app.globalData.user.userInfo.openId,
+            'userid': app.globalData.user.userInfo.userId,
+            'sortId': curr.currentTarget.dataset.id
+          },
+          success: function (res) {
+            var data = res.data
+            data = data.replace(" ", "");
+            if (typeof data != 'object') {
+              data = data.replace(/\ufeff/g, "");
+              var jj = JSON.parse(data);
+              res.data = jj;
+            }
+            data = res.data;
+            console.log("图片加载完成");
+            console.log(data);
+            if (data.msgCode != 1) {
+              return;
+            }
+            if (curr.currentTarget.dataset.id == 2) {
+              that.setData({
+                imageInfos_2: data
+              });
+            }
+            if (curr.currentTarget.dataset.id == 1) {
+              that.setData({
+                imageInfos_1: data
+              });
+            }
+            if (curr.currentTarget.dataset.id == 3) {
+              that.setData({
+                imageInfos_3: data
+              });
+            }
+          }
+        })
+      }
+    })
+  }
 })

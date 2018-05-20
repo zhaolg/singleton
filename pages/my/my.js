@@ -16,6 +16,7 @@ Page({
     var that = this;
     wx.login({
       success: function (res) {
+        app.globalData.code = res.code;
         wx.hideLoading();
         wx.getSetting({
           success: (response) => {
@@ -34,7 +35,7 @@ Page({
       }
     })
   },
-  getUserinfoFun:function(){
+  getUserinfoFun: function () {
     var that = this;
     wx.getUserInfo({
       withCredentials: true,
@@ -47,6 +48,25 @@ Page({
           actionType: "warn",
         });
         app.globalData.userInfo = res.userInfo;
+        if (app.globalData.user == null) {
+          that.getUserOpenId();
+        }
+      }
+    })
+  },
+  getUserOpenId: function () {
+    wx.request({
+      url: app.globalData.singletonUrl + '/userLogin?code=' + app.globalData.code + '&userName=' + app.globalData.userInfo.nickName,
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        app.globalData.openid = res.data.openid //返回openid
+        app.globalData.user = res.data[0];
+      },
+      fail: function (res) {
+        console.log(res);
       }
     })
   },
@@ -69,6 +89,35 @@ Page({
       content: '本系统由本人自行开发，目前均免费，使用中有任何问题可微信联系：<zhaolingang1314>,祝早日脱单！！！',
       showCancel: false
     })
+  },
+
+  myUserInfo: function () {
+    if (app.checkLogin()) {
+      wx.navigateTo({
+        url: "/pages/myinfo/myinfo"
+      })
+    }
+  },
+  myblance: function () {
+    if (app.checkLogin()) {
+      wx.navigateTo({
+        url: "/pages/myblance/blance"
+      })
+    }
+  },
+  myapplicat: function () {
+    if (app.checkLogin()) {
+      wx.navigateTo({
+        url: "/pages/myapplicat/applicat"
+      })
+    }
+  },
+  myinterest: function () {
+    if (app.checkLogin()) {
+      wx.navigateTo({
+        url: "/pages/myinterest/interest"
+      })
+    }
   },
 
 })

@@ -6,34 +6,34 @@
     <text class="userinfo-score" wx:if="{{userInfo.gender==2}}">♀ {{userInfo.country}} {{userInfo.province}}</text>
   </view>
 </view>
-<view class="userinfo-item">
+<view class="userinfo-item" bindtap="myUserInfo">
   <image src="../../images/my/my_info.png"></image>
-  <navigator url="/pages/myinfo/myinfo" open-type="navigate" hover-class="none"> 我的资料
+  <view>我的资料
     <image src="../../images/right-icon.png" />
-  </navigator>
+  </view>
 </view>
-<view class="userinfo-item">
+<view class="userinfo-item" bindtap="myblance">
   <image src="../../images/my/blance.png"></image>
-  <navigator url="/pages/myblance/blance" hover-class="none"> 我的钱包
+  <view> 我的钱包
     <text>（{{balance}}元）</text>
     <image src="../../images/right-icon.png" />
-  </navigator>
+  </view>
 </view>
-<view class="userinfo-item">
+<view class="userinfo-item" bindtap="myapplicat">
   <image src="../../images/my/like.png"></image>
-  <navigator url="/pages/myapplicat/applicat" hover-class="none"> 我的应征
+  <view> 我的应征
     <text>（999）</text>
     <image src="../../images/right-icon.png" />
-  </navigator>
+  </view>
 </view>
-<view class="userinfo-item">
+<view class="userinfo-item" bindtap="myinterest">
   <image src="../../images/my/like_2.png"></image>
-  <navigator url="/pages/myinterest/interest" hover-class="none"> 我感兴趣的TA
+  <view> 我感兴趣的TA
     <text>（999）</text>
     <image src="../../images/right-icon.png" />
-  </navigator>
+  </view>
 </view>
-<view class="userinfo-item" bindtap="aboutme" >
+<view class="userinfo-item" bindtap="aboutme">
   <image src="../../images/my/compar.png"></image>
   <view> 关于单身帮
     <image src="../../images/right-icon.png" />
@@ -41,5 +41,5 @@
 </view>
 <view style="height:50rpx;background: #eee;width:100%;"></view>
 <view class="my-item" style="border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;">
-  <button type="{{actionType}}" bindtap="relogin" open-type="getUserInfo" >{{actionText}}</button>
+  <button type="{{actionType}}" bindtap="relogin" open-type="getUserInfo">{{actionText}}</button>
 </view>
