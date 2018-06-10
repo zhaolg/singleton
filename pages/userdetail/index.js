@@ -1,3 +1,4 @@
+import componentsConfig from './config';
 var app = getApp();
 Page({
   data: {
@@ -8,7 +9,6 @@ Page({
     showView: true,
     windowWidth: 0,
     windowHeight: 0,
-    currindex: 1,
     imageInfos_1: {
       imageUrl: "/images/tpsc.png",
       imageId: 1
@@ -20,7 +20,8 @@ Page({
     imageInfos_3: {
       imageUrl: "/images/tpsc.png",
       imageId: 3
-    }
+    },
+    list: componentsConfig
   },
   onLoad: function (e) {
     var that = this;
@@ -32,11 +33,15 @@ Page({
         });
       }
     })
-      },
+    that.setData({
+      userInfo: app.globalData.userInfo,
+      user: app.globalData.user
+    });
+    console.log(app.globalData.user);
+  },
   onShow: function () {
     var that = this;
     if (app.globalData.user.imageInfos.length > 0) {
-      console.log("界面加载");
       if (app.globalData.user.imageInfos.length == 1) {
         that.setData({
           imageInfos_1: app.globalData.user.imageInfos[0]
@@ -49,14 +54,12 @@ Page({
         });
       }
       if (app.globalData.user.imageInfos.length >= 3) {
-        console.log("界面加载-3");
         that.setData({
           imageInfos_1: app.globalData.user.imageInfos[0],
           imageInfos_2: app.globalData.user.imageInfos[1],
           imageInfos_3: app.globalData.user.imageInfos[2]
         });
       }
-      console.log(app.globalData.user);
     }
 
   },
@@ -65,9 +68,6 @@ Page({
   },
   addImage: function (curr) {
     var that = this;
-    that.setData({
-      currindex: curr.currentTarget.dataset.id
-    });
     wx.chooseImage({
       success: function (res) {
         var tempFilePaths = res.tempFilePaths
@@ -86,11 +86,9 @@ Page({
             if (typeof data != 'object') {
               data = data.replace(/\ufeff/g, "");
               var jj = JSON.parse(data);
-              res.data = jj;
+              data = jj;
+              data.imageUrl = app.globalData.singletonUrlImage + data.imageUrl;
             }
-            data = res.data;
-            console.log("图片加载完成");
-            console.log(data);
             if (data.msgCode != 1) {
               return;
             }
@@ -99,12 +97,12 @@ Page({
                 imageInfos_2: data
               });
             }
-            if (curr.currentTarget.dataset.id == 1) {
+            if (curr.currentTarget.dataset.id  == 1) {
               that.setData({
                 imageInfos_1: data
               });
             }
-            if (curr.currentTarget.dataset.id == 3) {
+            if (curr.currentTarget.dataset.id  == 3) {
               that.setData({
                 imageInfos_3: data
               });
@@ -113,5 +111,13 @@ Page({
         })
       }
     })
-  }
+  },
+  onUnload: function () {
+    app.refreshUserInfo();
+  },
+  editor: function (curr){
+
+
+
+  },
 })

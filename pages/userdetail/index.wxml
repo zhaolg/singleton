@@ -1,34 +1,76 @@
-<view class="swiper-container">
-  <swiper class="swiper_box" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/3}}rpx" next-margin="{{windowWidth/3}}rpx">
-    <swiper-item class="swiper-box" bindtap="addImage" data-id="1">
-      <image src="{{imageInfos_1.imageUrl}}" mode="widthFix" />
-    </swiper-item>
-    <swiper-item class="swiper-box" bindtap="addImage" data-id="2">
-      <image src="{{imageInfos_2.imageUrl}}" mode="widthFix" />
-    </swiper-item>
-    <swiper-item class="swiper-box" bindtap="addImage" data-id="3">
-      <image src="{{imageInfos_3.imageUrl}}" mode="widthFix" />
-    </swiper-item>
-  </swiper>
-</view>
-<zan-panel title="我的信息">
-  <zan-row>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-  </zan-row>
-</zan-panel>
-<zan-panel title="我的标签">
-  <zan-row>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-  </zan-row>
-</zan-panel>
-<zan-panel title="按钮区域">
-  <zan-row>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-    <zan-col col="8" col-class="custom-zan-col">span: 8</zan-col>
-  </zan-row>
-</zan-panel>
+<doc-page title="{{userInfo.nickName}}">
+  <view class="swiper-container">
+    <swiper class="swiper_box" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/3}}rpx" next-margin="{{windowWidth/3}}rpx">
+      <swiper-item class="swiper-box" bindtap="addImage" data-id="1">
+        <image src="{{imageInfos_1.imageUrl}}" mode="widthFix" />
+      </swiper-item>
+      <swiper-item class="swiper-box" bindtap="addImage" data-id="2">
+        <image src="{{imageInfos_2.imageUrl}}" mode="widthFix" />
+      </swiper-item>
+      <swiper-item class="swiper-box" bindtap="addImage" data-id="3">
+        <image src="{{imageInfos_3.imageUrl}}" mode="widthFix" />
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <zan-panel title="我的基本信息">
+    <zan-cell-group>
+      <zan-cell is-link bindtap="editor" title="年龄" value="{{user.userInfo.age}}"></zan-cell>
+      <zan-cell is-link bindtap="editor" title="大学" value="{{user.userInfo.college}}"></zan-cell>
+      <zan-cell is-link bindtap="editor" title="学历" value="{{user.userInfo.edu}}"></zan-cell>
+      <zan-cell is-link bindtap="editor" title="现居" value="{{user.userInfo.currProvince +'|'+ user.userInfo.currCity}}"></zan-cell>
+      <zan-cell is-link bindtap="editor" title="籍贯" value="{{user.userInfo.nativeProvince +'|'+ user.userInfo.nativeCity}}"></zan-cell>
+    </zan-cell-group>
+  </zan-panel>
+
+  <zan-panel title="个人签名">
+    <zan-cell-group>
+      <zan-cell is-link bindtap="editor" title="">
+        <view class="capsule-demo">
+          <view style="padding: 15px;">{{user.userInfo.selfIntroduction}}</view>
+        </view>
+      </zan-cell>
+    </zan-cell-group>
+  </zan-panel>
+
+  <zan-panel title="我的兴趣">
+    <zan-cell-group>
+     <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="个性">
+        <block wx:for="{{user.userTags}}" wx:key="item">
+          <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'primary' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
+        </block>
+      </zan-cell>
+      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="运动">
+        <block wx:for="{{user.userTags}}" wx:key="item">
+            <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'danger' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
+        </block>
+      </zan-cell>
+      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="食物">
+        <block wx:for="{{user.userTags}}" wx:key="item">
+          <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'warn' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
+        </block>
+      </zan-cell>
+      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="电影">
+        <block wx:for="{{user.userTags}}" wx:key="item">
+          <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'danger' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
+        </block>
+      </zan-cell>
+      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="书籍">
+        <block wx:for="{{user.userTags}}" wx:key="item">
+          <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'primary' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
+        </block>
+      </zan-cell>
+      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="旅游足迹">
+        <block wx:for="{{user.userTags}}" wx:key="item">
+          <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'warn' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
+        </block>
+      </zan-cell>
+    </zan-cell-group>
+  </zan-panel>
+
+  <zan-panel title=" ">
+    <zan-button-group>
+      <zan-button style="margin-top:20px;" bindtap="saveUserInfo" type="primary">保存当前修改</zan-button>
+    </zan-button-group>
+  </zan-panel>
+</doc-page>

@@ -49,24 +49,8 @@ Page({
         });
         app.globalData.userInfo = res.userInfo;
         if (app.globalData.user == null) {
-          that.getUserOpenId();
+          app.getUserOpenId();
         }
-      }
-    })
-  },
-  getUserOpenId: function () {
-    wx.request({
-      url: app.globalData.singletonUrl + '/userLogin?code=' + app.globalData.code + '&userName=' + app.globalData.userInfo.nickName,
-      data: {},
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        app.globalData.openid = res.data.openid //返回openid
-        app.globalData.user = res.data[0];
-      },
-      fail: function (res) {
-        console.log(res);
       }
     })
   },
@@ -79,6 +63,7 @@ Page({
         userInfo: null
       });
       app.globalData.userInfo = null;
+      app.globalData.user = null;
     } else {//登录
       this.getUserInfo();
     }

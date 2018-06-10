@@ -13,7 +13,6 @@ Page({
   onLoad: function (e) {
     if (app.checkLogin()) {
       var that = this;
-      console.log(app.globalData.user);
       wx.getSystemInfo({
         success: function (res) {
           that.setData({
@@ -44,7 +43,6 @@ Page({
     });
   },
   modifySelfInfo:function(){
-    console.log("修改我的资料");
     wx.navigateTo({
       url: "/pages/userdetail/index"
     })
