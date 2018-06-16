@@ -1,4 +1,3 @@
-import componentsConfig from './config';
 var app = getApp();
 Page({
   data: {
@@ -20,8 +19,7 @@ Page({
     imageInfos_3: {
       imageUrl: "/images/tpsc.png",
       imageId: 3
-    },
-    list: componentsConfig
+    }
   },
   onLoad: function (e) {
     var that = this;
@@ -115,9 +113,10 @@ Page({
   onUnload: function () {
     app.refreshUserInfo();
   },
-  editor: function (curr){
-
-
-
+  editorBaseInfo: function (curr){
+    var type_id = curr.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "/pages/editorInfo/index?type=" + type_id
+    })
   },
 })

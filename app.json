@@ -12,7 +12,8 @@
     "pages/myapplicat/applicat",
     "pages/myinterest/interest",
     "pages/aboutme/aboutme",
-    "pages/charge/index"
+    "pages/charge/index",
+    "pages/editorInfo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -13,19 +13,19 @@
     </swiper>
   </view>
 
-  <zan-panel title="我的基本信息">
+  <zan-panel title="我的基本信息" bindtap="editorBaseInfo">
     <zan-cell-group>
-      <zan-cell is-link bindtap="editor" title="年龄" value="{{user.userInfo.age}}"></zan-cell>
-      <zan-cell is-link bindtap="editor" title="大学" value="{{user.userInfo.college}}"></zan-cell>
-      <zan-cell is-link bindtap="editor" title="学历" value="{{user.userInfo.edu}}"></zan-cell>
-      <zan-cell is-link bindtap="editor" title="现居" value="{{user.userInfo.currProvince +'|'+ user.userInfo.currCity}}"></zan-cell>
-      <zan-cell is-link bindtap="editor" title="籍贯" value="{{user.userInfo.nativeProvince +'|'+ user.userInfo.nativeCity}}"></zan-cell>
+      <zan-cell is-link  title="年龄" data-id="age" value="{{user.userInfo.age}}"></zan-cell>
+      <zan-cell is-link  title="大学" data-id="college" value="{{user.userInfo.college}}"></zan-cell>
+      <zan-cell is-link  title="学历"  data-id="edu" value="{{user.userInfo.edu}}"></zan-cell>
+      <zan-cell is-link  title="现居"  data-id="currCity" value="{{user.userInfo.currProvince +'|'+ user.userInfo.currCity}}"></zan-cell>
+      <zan-cell is-link  title="籍贯"  data-id="nativeCity" value="{{user.userInfo.nativeProvince +'|'+ user.userInfo.nativeCity}}"></zan-cell>
     </zan-cell-group>
   </zan-panel>
 
-  <zan-panel title="个人签名">
+  <zan-panel title="个人签名" bindtap="editor" data-id="selfIntroduction" >
     <zan-cell-group>
-      <zan-cell is-link bindtap="editor" title="">
+      <zan-cell is-link  title="">
         <view class="capsule-demo">
           <view style="padding: 15px;">{{user.userInfo.selfIntroduction}}</view>
         </view>
@@ -33,34 +33,34 @@
     </zan-cell-group>
   </zan-panel>
 
-  <zan-panel title="我的兴趣">
+  <zan-panel title="我的兴趣" bindtap="editor" >
     <zan-cell-group>
-     <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="个性">
+     <zan-cell is-link  data-id="bardian" title="个性">
         <block wx:for="{{user.userTags}}" wx:key="item">
           <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'primary' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
         </block>
       </zan-cell>
-      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="运动">
+      <zan-cell is-link  data-id="sport" title="运动">
         <block wx:for="{{user.userTags}}" wx:key="item">
             <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'danger' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
         </block>
       </zan-cell>
-      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="食物">
+      <zan-cell is-link  data-id="foot" title="食物">
         <block wx:for="{{user.userTags}}" wx:key="item">
           <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'warn' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
         </block>
       </zan-cell>
-      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="电影">
+      <zan-cell is-link  data-id="moive" title="电影">
         <block wx:for="{{user.userTags}}" wx:key="item">
           <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'danger' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
         </block>
       </zan-cell>
-      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="书籍">
+      <zan-cell is-link   data-id="book" title="书籍">
         <block wx:for="{{user.userTags}}" wx:key="item">
           <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'primary' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
         </block>
       </zan-cell>
-      <zan-cell is-link bindtap="editor" data-id="{{ item.id }}" title="旅游足迹">
+      <zan-cell is-link   data-id="travel" title="旅游足迹">
         <block wx:for="{{user.userTags}}" wx:key="item">
           <zan-tag type="{{item.tagType}}" style="{{ item.tagType == 'warn' ?'':'display: none;'}}" plain>{{item.tagName}}</zan-tag>
         </block>

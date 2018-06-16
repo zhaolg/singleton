@@ -109,7 +109,6 @@ Page({
 
   showUserDetail: function (e) {
     if (app.checkLogin()) {
-      console.log("method:showUserDetail---->跳转到用户详情见面");
       wx.navigateTo({
         url: "/pages/myinfo/myinfo?userId=" + e.currentTarget.dataset.id
       })
