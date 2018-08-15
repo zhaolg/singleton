@@ -119,4 +119,11 @@ Page({
       url: "/pages/editorInfo/index?type=" + type_id
     })
   },
+  saveUserInfo: function(){
+    console.log("保存数据");
+  }
+
+
+
+
 })

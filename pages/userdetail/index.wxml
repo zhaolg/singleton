@@ -33,7 +33,7 @@
     </zan-cell-group>
   </zan-panel>
 
-  <zan-panel title="我的兴趣" bindtap="editor" >
+  <zan-panel title="我的兴趣" bindtap="editorBaseInfo" >
     <zan-cell-group>
      <zan-cell is-link  data-id="bardian" title="个性">
         <block wx:for="{{user.userTags}}" wx:key="item">

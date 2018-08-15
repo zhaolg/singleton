@@ -1,29 +1,75 @@
-<view class="time_screens" style='{}'>
-  <view style="text-align:center;color:#45BCE8">{{year}}-{{month}}-{{day}} {{hour}}:{{minute}}
-    <label style="float:right;margin-right:10px;">确定</label>
+<view class="page">
+
+  <view class="page__bd">
+
+    <view class="weui-cells__title">基本信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出生日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+            <view class="weui-input">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">大学</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入大学名称" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">学历</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindEduChange" value="{{edusIndex}}" range="{{edus}}">
+            <view class="weui-select weui-select_in-select-after">{{edus[edusIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">现居地区</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region"  bindchange="bindRegionCurrChange" value="{{regionCurr}}" custom-item="{{customItem}}">
+            <view class="weui-select weui-select_in-select-after">{{regionCurr[0]}}|{{regionCurr[1]}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">籍贯</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region"  bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view class="weui-select weui-select_in-select-after">{{region[0]}}|{{region[1]}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">个性签名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入个性签名" style="height: 3.3em" />
+            <view class="weui-textarea-counter">0/140</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="saveInfoDetail">确定</button>
+      </view>
+    </view>
   </view>
-  <view style="border-top:1px solid #45BCE8;height:25px;font-size:14px;">
-    <view class="time-title">年</view>
-    <view class="time-title">月</view>
-    <view class="time-title">日</view>
-    <view class="time-title">时</view>
-    <view class="time-title">分</view>
-  </view>
-  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
-    <picker-view-column class="picker-text">
-      <view wx:for="{{years}}" wx:key="item" style="line-height: 50px">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column class="picker-text">
-      <view wx:for="{{months}}" wx:key="item" style="line-height: 50px">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column class="picker-text">
-      <view wx:for="{{days}}" wx:key="item" style="line-height: 50px">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column class="picker-text">
-      <view wx:for="{{hours}}" wx:key="item" style="line-height: 50px">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column class="picker-text">
-      <view wx:for="{{minutes}}" wx:key="item" style="line-height: 50px">{{item}}</view>
-    </picker-view-column>
-  </picker-view>
 </view>
